@@ -1,6 +1,9 @@
-from sqlalchemy import Column, Integer, String, Enum, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Enum
 from sqlalchemy.sql import func
 from app.db.session import Base
+from sqlalchemy.dialects.postgresql import ENUM
+
+rol_enum = ENUM('superadministrador', 'administrador', 'colaborador', name='rol_enum', create_type=False)
 
 class User(Base):
     __tablename__ = "usuarios"
@@ -9,5 +12,5 @@ class User(Base):
     nombre = Column(String(100), nullable=False)
     correo = Column(String(100), unique=True, nullable=False)
     contrasena = Column(String(255), nullable=False)
-    rol = Column(Enum("superadministrador", "administrador", "colaborador"), nullable=False)
+    rol = Column(rol_enum, nullable=False)
     fecha_creacion = Column(DateTime, default=func.now())

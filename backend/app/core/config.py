@@ -7,6 +7,6 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     class Config:
-        env_file = ".env"
+        env_file = ".env"  # Indica que las variables se cargarán desde un archivo .env
 
 settings = Settings()

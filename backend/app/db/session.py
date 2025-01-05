@@ -6,8 +6,8 @@ from app.core.config import settings
 # Crear el motor de la base de datos
 engine = create_engine(settings.DATABASE_URL)
 
-# Crear la sesión de la base de datos
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Base para los modelos
+# Crear la base declarativa
 Base = declarative_base()
+
+# Crear la sesión
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
